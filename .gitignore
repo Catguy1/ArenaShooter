@@ -1,4 +1,3 @@
-
 # Compiled Object files
 *.slo
 *.lo
@@ -66,3 +65,4 @@ DerivedDataCache/*
 *.swp
 *.swo
 .ctrlp_cache/
+
