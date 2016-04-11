@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<None Include="..\..\ArenaShooter.uproject" />
+		<Filter Include="Source">
+			<UniqueIdentifier>{5FFF46B2-62A8-4C19-98D3-5732FCA039F3}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\ArenaShooter.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<None Include="..\..\Source\ArenaShooterEditor.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<Filter Include="Config">
+			<UniqueIdentifier>{FE4A2E7C-9FF5-497F-A4F0-737BD77E6CEF}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Config\DefaultEditor.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEngine.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultGame.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultInput.ini">
+			<Filter>Config</Filter>
+		</None >
+		<Filter Include="Source\ArenaShooter">
+			<UniqueIdentifier>{44950DEC-03FB-4C61-AD0F-06DD60E97104}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\ArenaShooter\ArenaShooter.Build.cs">
+			<Filter>Source\ArenaShooter</Filter>
+		</None >
+		<ClCompile Include="..\..\Source\ArenaShooter\ArenaShooter.cpp">
+			<Filter>Source\ArenaShooter</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\ArenaShooter\ArenaShooter.h">
+			<Filter>Source\ArenaShooter</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\ArenaShooter\ArenaShooterCharacter.cpp">
+			<Filter>Source\ArenaShooter</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\ArenaShooter\ArenaShooterCharacter.h">
+			<Filter>Source\ArenaShooter</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\ArenaShooter\ArenaShooterGameMode.cpp">
+			<Filter>Source\ArenaShooter</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\ArenaShooter\ArenaShooterGameMode.h">
+			<Filter>Source\ArenaShooter</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\ArenaShooter\ArenaShooterHUD.cpp">
+			<Filter>Source\ArenaShooter</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\ArenaShooter\ArenaShooterHUD.h">
+			<Filter>Source\ArenaShooter</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\ArenaShooter\ArenaShooterProjectile.cpp">
+			<Filter>Source\ArenaShooter</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\ArenaShooter\ArenaShooterProjectile.h">
+			<Filter>Source\ArenaShooter</Filter>
+		</ClInclude >
+	</ItemGroup>
+</Project>
