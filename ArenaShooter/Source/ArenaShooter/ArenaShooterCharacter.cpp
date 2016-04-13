@@ -1,12 +1,13 @@
 // Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 
 #include "ArenaShooter.h"
+#include "DrawDebugHelpers.h"
 #include "ArenaShooterCharacter.h"
 #include "ArenaShooterProjectile.h"
 #include "Animation/AnimInstance.h"
 #include "GameFramework/InputSettings.h"
 
-DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
+//DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 
 //////////////////////////////////////////////////////////////////////////
 // AArenaShooterCharacter
@@ -99,13 +100,33 @@ void AArenaShooterCharacter::OnFire()
 		// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
 		const FVector SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
 
+
+
 		UWorld* const World = GetWorld();
 		if (World != NULL)
 		{
 			// spawn the projectile at the muzzle
-			World->SpawnActor<AArenaShooterProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+			//World->SpawnActor<AArenaShooterProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+
+			FVector PPos;
+
+			FRotator Prot;
+
+			//GetOwner()->GetActorEyesViewPoint(PPos, Prot);
+			
+			FVector RayStart = SpawnLocation + SpawnRotation.Vector();
+
+			FVector RayEnd = SpawnLocation + SpawnRotation.Vector() * 100000;
+
+			FHitResult HitResult;
+			bool DidHitSomething = World->LineTraceSingleByObjectType(HitResult, RayStart, RayEnd, FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
+				FCollisionQueryParams("ActionTrace", false, GetOwner()));
+			DrawDebugLine(GetWorld(), RayStart, RayEnd, FColor(255, 0, 0), true, -1.0f, 0, 10.0f);
 		}
+
 	}
+
+
 
 	// try and play the sound if specified
 	if (FireSound != NULL)
