@@ -5,6 +5,7 @@
 #include "Components/ActorComponent.h"
 #include "MonsterComponent.generated.h"
 
+//DECLARE_DELEGATE(TakeDamage)
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ARENASHOOTER_API UMonsterComponent : public UActorComponent
@@ -24,5 +25,7 @@ public:
 private:
 	UPROPERTY(EditAnyWhere)
 		float Health = 600.0f;
+	/*UPROPERTY(BlueprintAssignable)
+		TakeDamage Damage;*/
 	
 };
