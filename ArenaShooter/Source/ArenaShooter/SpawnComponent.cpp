@@ -21,16 +21,28 @@ void USpawnComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
+	Timer = SpawnTime;
 	// ...
-	
+
 }
 
 
 // Called every frame
-void USpawnComponent::TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction )
+void USpawnComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
-	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
+	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	AActor *a = ActorToSpawn;
+
+	if (Timer <= 0)
+	{
+		//GetWorld()->SpawnActor<AActor>(GetOwner()->GetActorLocation(), GetOwner()->GetActorRotation());
+		Timer = SpawnTime;
+	}
+	else
+	{
+		Timer -= DeltaTime;
+	}
+
 }
 
