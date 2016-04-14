@@ -20,6 +20,11 @@ AArenaShooterCharacter::AArenaShooterCharacter()
 	// set our turn rates for input
 	BaseTurnRate = 45.f;
 	BaseLookUpRate = 45.f;
+	Shooting = false;
+	FireTime = 1.0f;
+	FireTimer = 0;
+	MaxHealth = 500;
+	Health = MaxHealth;
 
 	// Create a CameraComponent	
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
@@ -73,11 +78,9 @@ void AArenaShooterCharacter::SetupPlayerInputComponent(class UInputComponent* In
 	InputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	InputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
-	//InputComponent->BindTouch(EInputEvent::IE_Pressed, this, &AArenaShooterCharacter::TouchStarted);
-	if (EnableTouchscreenMovement(InputComponent) == false)
-	{
-		InputComponent->BindAction("Fire", IE_Pressed, this, &AArenaShooterCharacter::OnFire);
-	}
+	//InputComponent->BindTouch(EInputEvent::IE_Pressed, this, &AArenaShooterCharacter::TouchStarted);	
+	InputComponent->BindAction("Fire", IE_Pressed, this, &AArenaShooterCharacter::OnBeginFire);
+	InputComponent->BindAction("Fire", IE_Released, this, &AArenaShooterCharacter::OnEndFire);
 
 	InputComponent->BindAxis("MoveForward", this, &AArenaShooterCharacter::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AArenaShooterCharacter::MoveRight);
@@ -91,39 +94,53 @@ void AArenaShooterCharacter::SetupPlayerInputComponent(class UInputComponent* In
 	InputComponent->BindAxis("LookUpRate", this, &AArenaShooterCharacter::LookUpAtRate);
 }
 
+
+void AArenaShooterCharacter::OnBeginFire()
+{
+	Shooting = true;
+}
+
+void AArenaShooterCharacter::OnEndFire()
+{
+	Shooting = false;
+}
+
 void AArenaShooterCharacter::OnFire()
 {
-	// try and fire a projectile
-	if (ProjectileClass != NULL)
+	if (true)
 	{
-		const FRotator SpawnRotation = GetControlRotation();
-		// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
-		const FVector SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
-
-
-
-		UWorld* const World = GetWorld();
-		if (World != NULL)
+		// try and fire a projectile
+		if (ProjectileClass != NULL)
 		{
-			// spawn the projectile at the muzzle
-			//World->SpawnActor<AArenaShooterProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+			const FRotator SpawnRotation = GetControlRotation();
+			// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
+			const FVector SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
 
-			FVector PPos;
 
-			FRotator Prot;
 
-			//GetOwner()->GetActorEyesViewPoint(PPos, Prot);
-			
-			FVector RayStart = SpawnLocation + SpawnRotation.Vector();
+			UWorld* const World = GetWorld();
+			if (World != NULL)
+			{
+				// spawn the projectile at the muzzle
+				//World->SpawnActor<AArenaShooterProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 
-			FVector RayEnd = SpawnLocation + SpawnRotation.Vector() * 100000;
+				FVector PPos;
 
-			FHitResult HitResult;
-			bool DidHitSomething = World->LineTraceSingleByObjectType(HitResult, RayStart, RayEnd, FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
-				FCollisionQueryParams("ActionTrace", false, GetOwner()));
-			DrawDebugLine(GetWorld(), RayStart, RayEnd, FColor(255, 0, 0), true, -1.0f, 0, 10.0f);
+				FRotator Prot;
+
+				//GetOwner()->GetActorEyesViewPoint(PPos, Prot);
+
+				FVector RayStart = SpawnLocation + SpawnRotation.Vector();
+
+				FVector RayEnd = SpawnLocation + SpawnRotation.Vector() * 10000000;
+
+				FHitResult HitResult;
+				bool DidHitSomething = World->LineTraceSingleByObjectType(HitResult, RayStart, RayEnd, FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
+					FCollisionQueryParams("ActionTrace", false, GetOwner()));
+				DrawDebugLine(GetWorld(), RayStart, RayEnd, FColor(255, 0, 0), true, -1.0f, 0, 10.0f);
+			}
+
 		}
-
 	}
 
 
@@ -248,4 +265,14 @@ bool AArenaShooterCharacter::EnableTouchscreenMovement(class UInputComponent* In
 		InputComponent->BindTouch(EInputEvent::IE_Repeat, this, &AArenaShooterCharacter::TouchUpdate);
 	}
 	return bResult;
+}
+
+void AArenaShooterCharacter::Tick(float Deltatime)
+{
+	FireTimer -= Deltatime;
+	if (Shooting&&FireTimer <= 0)
+	{
+		OnFire();
+		FireTimer = FireTime;
+	}
 }

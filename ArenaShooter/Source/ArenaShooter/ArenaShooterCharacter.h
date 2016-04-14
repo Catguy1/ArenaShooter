@@ -58,6 +58,19 @@ protected:
 	
 	/** Fires a projectile. */
 	void OnFire();
+	void OnBeginFire();
+	void OnEndFire();
+
+	bool Shooting;
+	float FireTime;
+	float FireTimer;
+
+	float MaxHealth;
+	float Health;
+
+
+
+	virtual void Tick(float Deltatime) override;
 
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
