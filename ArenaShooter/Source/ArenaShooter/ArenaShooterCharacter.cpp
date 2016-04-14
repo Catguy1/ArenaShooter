@@ -138,6 +138,14 @@ void AArenaShooterCharacter::OnFire()
 				bool DidHitSomething = World->LineTraceSingleByObjectType(HitResult, RayStart, RayEnd, FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
 					FCollisionQueryParams("ActionTrace", false, GetOwner()));
 				DrawDebugLine(GetWorld(), RayStart, RayEnd, FColor(255, 0, 0), true, -1.0f, 0, 10.0f);
+
+				if (DidHitSomething)
+				{
+					TSubclassOf<UDamageType> const ValidDamageTypeClass = TSubclassOf<UDamageType>(UDamageType::StaticClass());
+					FDamageEvent DamageEvent(ValidDamageTypeClass);
+
+					HitResult.Actor->TakeDamage(1000, DamageEvent, GetWorld()->GetFirstPlayerController(), this);
+				}
 			}
 
 		}

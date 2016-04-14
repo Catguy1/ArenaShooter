@@ -7,7 +7,7 @@
 // Sets default values
 AMonsterPawn::AMonsterPawn()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
@@ -17,18 +17,20 @@ void AMonsterPawn::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Health = 100;
+	Health = 1200;
 
-	MoveComponent = GetMovementComponent();
 	
+
 }
 
 // Called every frame
-void AMonsterPawn::Tick( float DeltaTime )
+void AMonsterPawn::Tick(float DeltaTime)
 {
-	Super::Tick( DeltaTime );
+	Super::Tick(DeltaTime);
 
-	//MoveComponent->SafeMoveUpdatedComponent()
+	FVector movement = FVector(10, 0, 0);
+
+	SetActorRelativeLocation(movement*DeltaTime);
 }
 
 // Called to bind functionality to input
