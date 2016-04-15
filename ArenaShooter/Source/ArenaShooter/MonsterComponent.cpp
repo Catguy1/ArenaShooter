@@ -13,25 +13,23 @@ UMonsterComponent::UMonsterComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 
 
-}	
+}
 
 
 // Called when the game starts
 void UMonsterComponent::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	// ...
-	
+
 }
 
 
 // Called every frame
-void UMonsterComponent::TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction )
+void UMonsterComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
-	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
-
-	
+	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
 }

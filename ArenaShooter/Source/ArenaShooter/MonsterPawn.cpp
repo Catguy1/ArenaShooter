@@ -16,11 +16,6 @@ AMonsterPawn::AMonsterPawn()
 void AMonsterPawn::BeginPlay()
 {
 	Super::BeginPlay();
-
-	Health = 1200;
-
-	
-
 }
 
 // Called every frame
@@ -28,9 +23,9 @@ void AMonsterPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	FVector movement = FVector(10, 0, 0);
+	//FVector movement = FVector(10, 0, 0);
 
-	SetActorRelativeLocation(movement*DeltaTime);
+	//SetActorRelativeLocation(movement*DeltaTime);
 }
 
 // Called to bind functionality to input
