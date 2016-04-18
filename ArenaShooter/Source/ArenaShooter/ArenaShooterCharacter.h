@@ -26,6 +26,10 @@ class AArenaShooterCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FirstPersonCameraComponent;
 public:
+	virtual float GetCurrentHealth();
+
+	virtual float GetMaxHealth();
+
 	AArenaShooterCharacter();
 
 	virtual void BeginPlay();
@@ -86,11 +90,14 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float MaxHealth;
-	float Health;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float Health;
 
 
 
 	virtual void Tick(float Deltatime) override;
+
+	virtual float TakeDamage(float Damage, FDamageEvent const & DamageEvent, AController * EventInstigator, AActor * DamageCauser) override;
 
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
