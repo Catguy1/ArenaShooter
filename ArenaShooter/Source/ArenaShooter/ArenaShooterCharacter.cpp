@@ -21,9 +21,6 @@ AArenaShooterCharacter::AArenaShooterCharacter()
 	BaseTurnRate = 45.f;
 	BaseLookUpRate = 45.f;
 	Shooting = false;
-	FireTime = 1.0f;
-	FireTimer = 0;
-	MaxHealth = 500;
 	Health = MaxHealth;
 
 	// Create a CameraComponent	

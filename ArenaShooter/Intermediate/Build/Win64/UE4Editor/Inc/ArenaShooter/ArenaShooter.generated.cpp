@@ -9,10 +9,14 @@
 #include "ArenaShooter.generated.dep.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeArenaShooter() {}
+	void UAnotherTest::StaticRegisterNativesUAnotherTest()
+	{
+	}
+	IMPLEMENT_CLASS(UAnotherTest, 1577555384);
 	void AArenaShooterCharacter::StaticRegisterNativesAArenaShooterCharacter()
 	{
 	}
-	IMPLEMENT_CLASS(AArenaShooterCharacter, 3523799178);
+	IMPLEMENT_CLASS(AArenaShooterCharacter, 915844575);
 	void AArenaShooterGameMode::StaticRegisterNativesAArenaShooterGameMode()
 	{
 	}
@@ -26,8 +30,33 @@ void EmptyLinkFunctionForGeneratedCodeArenaShooter() {}
 		FNativeFunctionRegistrar::RegisterFunction(AArenaShooterProjectile::StaticClass(), "OnHit",(Native)&AArenaShooterProjectile::execOnHit);
 	}
 	IMPLEMENT_CLASS(AArenaShooterProjectile, 3449153812);
+	void AMonsterActor::StaticRegisterNativesAMonsterActor()
+	{
+	}
+	IMPLEMENT_CLASS(AMonsterActor, 2020475285);
+	void UMonsterComponent::StaticRegisterNativesUMonsterComponent()
+	{
+	}
+	IMPLEMENT_CLASS(UMonsterComponent, 2771130104);
+	void AMonsterPawn::StaticRegisterNativesAMonsterPawn()
+	{
+	}
+	IMPLEMENT_CLASS(AMonsterPawn, 333056209);
+	void USpawnComponent::StaticRegisterNativesUSpawnComponent()
+	{
+	}
+	IMPLEMENT_CLASS(USpawnComponent, 3648598187);
+	void ASpawnScript::StaticRegisterNativesASpawnScript()
+	{
+	}
+	IMPLEMENT_CLASS(ASpawnScript, 2410625944);
+	void UTEst::StaticRegisterNativesUTEst()
+	{
+	}
+	IMPLEMENT_CLASS(UTEst, 3385695792);
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
+	ENGINE_API class UClass* Z_Construct_UClass_UActorComponent();
 	ENGINE_API class UClass* Z_Construct_UClass_ACharacter();
 	ENGINE_API class UClass* Z_Construct_UClass_UAnimMontage_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_USoundBase_NoRegister();
@@ -43,7 +72,10 @@ void EmptyLinkFunctionForGeneratedCodeArenaShooter() {}
 	ENGINE_API class UClass* Z_Construct_UClass_AActor();
 	ENGINE_API class UClass* Z_Construct_UClass_UProjectileMovementComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_USphereComponent_NoRegister();
+	ENGINE_API class UClass* Z_Construct_UClass_APawn();
 
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_UAnotherTest_NoRegister();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_UAnotherTest();
 	ARENASHOOTER_API class UClass* Z_Construct_UClass_AArenaShooterCharacter_NoRegister();
 	ARENASHOOTER_API class UClass* Z_Construct_UClass_AArenaShooterCharacter();
 	ARENASHOOTER_API class UClass* Z_Construct_UClass_AArenaShooterGameMode_NoRegister();
@@ -53,7 +85,55 @@ void EmptyLinkFunctionForGeneratedCodeArenaShooter() {}
 	ARENASHOOTER_API class UFunction* Z_Construct_UFunction_AArenaShooterProjectile_OnHit();
 	ARENASHOOTER_API class UClass* Z_Construct_UClass_AArenaShooterProjectile_NoRegister();
 	ARENASHOOTER_API class UClass* Z_Construct_UClass_AArenaShooterProjectile();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_AMonsterActor_NoRegister();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_AMonsterActor();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_UMonsterComponent_NoRegister();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_UMonsterComponent();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_AMonsterPawn_NoRegister();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_AMonsterPawn();
+	ARENASHOOTER_API class UFunction* Z_Construct_UDelegateFunction_ArenaShooter_SpawnDelegate__DelegateSignature();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_USpawnComponent_NoRegister();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_USpawnComponent();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_ASpawnScript_NoRegister();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_ASpawnScript();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_UTEst_NoRegister();
+	ARENASHOOTER_API class UClass* Z_Construct_UClass_UTEst();
 	ARENASHOOTER_API class UPackage* Z_Construct_UPackage__Script_ArenaShooter();
+	UClass* Z_Construct_UClass_UAnotherTest_NoRegister()
+	{
+		return UAnotherTest::StaticClass();
+	}
+	UClass* Z_Construct_UClass_UAnotherTest()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_UActorComponent();
+			Z_Construct_UPackage__Script_ArenaShooter();
+			OuterClass = UAnotherTest::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20B00080;
+
+
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("BlueprintSpawnableComponent"), TEXT(""));
+				MetaData->SetValue(OuterClass, TEXT("ClassGroupNames"), TEXT("Custom"));
+				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("ComponentReplication"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("AnotherTest.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("AnotherTest.h"));
+				MetaData->SetValue(OuterClass, TEXT("OnlyDefaultConstructorDeclared"), TEXT(""));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_UAnotherTest(Z_Construct_UClass_UAnotherTest, &UAnotherTest::StaticClass, TEXT("UAnotherTest"), false, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(UAnotherTest);
 	UClass* Z_Construct_UClass_AArenaShooterCharacter_NoRegister()
 	{
 		return AArenaShooterCharacter::StaticClass();
@@ -73,6 +153,8 @@ void EmptyLinkFunctionForGeneratedCodeArenaShooter() {}
 
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_MaxHealth = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxHealth"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxHealth, AArenaShooterCharacter), 0x0020080000000005);
+				UProperty* NewProp_FireTime = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FireTime"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(FireTime, AArenaShooterCharacter), 0x0020080000000005);
 				UProperty* NewProp_FireAnimation = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FireAnimation"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(FireAnimation, AArenaShooterCharacter), 0x0010000000000005, Z_Construct_UClass_UAnimMontage_NoRegister());
 				UProperty* NewProp_FireSound = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FireSound"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(FireSound, AArenaShooterCharacter), 0x0010000000000005, Z_Construct_UClass_USoundBase_NoRegister());
 				UProperty* NewProp_ProjectileClass = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("ProjectileClass"), RF_Public|RF_Transient|RF_MarkAsNative) UClassProperty(CPP_PROPERTY_BASE(ProjectileClass, AArenaShooterCharacter), 0x0014000000010001, Z_Construct_UClass_AArenaShooterProjectile_NoRegister(), UClass::StaticClass());
@@ -92,6 +174,10 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("ArenaShooterCharacter.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("ArenaShooterCharacter.h"));
 				MetaData->SetValue(OuterClass, TEXT("OnlyDefaultConstructorDeclared"), TEXT(""));
+				MetaData->SetValue(NewProp_MaxHealth, TEXT("Category"), TEXT("ArenaShooterCharacter"));
+				MetaData->SetValue(NewProp_MaxHealth, TEXT("ModuleRelativePath"), TEXT("ArenaShooterCharacter.h"));
+				MetaData->SetValue(NewProp_FireTime, TEXT("Category"), TEXT("ArenaShooterCharacter"));
+				MetaData->SetValue(NewProp_FireTime, TEXT("ModuleRelativePath"), TEXT("ArenaShooterCharacter.h"));
 				MetaData->SetValue(NewProp_FireAnimation, TEXT("Category"), TEXT("Gameplay"));
 				MetaData->SetValue(NewProp_FireAnimation, TEXT("ModuleRelativePath"), TEXT("ArenaShooterCharacter.h"));
 				MetaData->SetValue(NewProp_FireAnimation, TEXT("ToolTip"), TEXT("AnimMontage to play each time we fire"));
@@ -282,6 +368,251 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AArenaShooterProjectile(Z_Construct_UClass_AArenaShooterProjectile, &AArenaShooterProjectile::StaticClass, TEXT("AArenaShooterProjectile"), false, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AArenaShooterProjectile);
+	UClass* Z_Construct_UClass_AMonsterActor_NoRegister()
+	{
+		return AMonsterActor::StaticClass();
+	}
+	UClass* Z_Construct_UClass_AMonsterActor()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_AActor();
+			Z_Construct_UPackage__Script_ArenaShooter();
+			OuterClass = AMonsterActor::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_Health = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("Health"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(Health, AMonsterActor), 0x0040000000000001);
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("MonsterActor.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("MonsterActor.h"));
+				MetaData->SetValue(OuterClass, TEXT("OnlyDefaultConstructorDeclared"), TEXT(""));
+				MetaData->SetValue(NewProp_Health, TEXT("Category"), TEXT("MonsterActor"));
+				MetaData->SetValue(NewProp_Health, TEXT("ModuleRelativePath"), TEXT("MonsterActor.h"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_AMonsterActor(Z_Construct_UClass_AMonsterActor, &AMonsterActor::StaticClass, TEXT("AMonsterActor"), false, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(AMonsterActor);
+	UClass* Z_Construct_UClass_UMonsterComponent_NoRegister()
+	{
+		return UMonsterComponent::StaticClass();
+	}
+	UClass* Z_Construct_UClass_UMonsterComponent()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_UActorComponent();
+			Z_Construct_UPackage__Script_ArenaShooter();
+			OuterClass = UMonsterComponent::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20B00080;
+
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_Health = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("Health"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(Health, UMonsterComponent), 0x0010000000000004);
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("BlueprintSpawnableComponent"), TEXT(""));
+				MetaData->SetValue(OuterClass, TEXT("ClassGroupNames"), TEXT("Custom"));
+				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("ComponentReplication"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("MonsterComponent.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("MonsterComponent.h"));
+				MetaData->SetValue(OuterClass, TEXT("OnlyDefaultConstructorDeclared"), TEXT(""));
+				MetaData->SetValue(OuterClass, TEXT("ToolTip"), TEXT("DECLARE_DELEGATE(TakeDamage)"));
+				MetaData->SetValue(NewProp_Health, TEXT("Category"), TEXT("MonsterComponent"));
+				MetaData->SetValue(NewProp_Health, TEXT("ModuleRelativePath"), TEXT("MonsterComponent.h"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_UMonsterComponent(Z_Construct_UClass_UMonsterComponent, &UMonsterComponent::StaticClass, TEXT("UMonsterComponent"), false, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(UMonsterComponent);
+	UClass* Z_Construct_UClass_AMonsterPawn_NoRegister()
+	{
+		return AMonsterPawn::StaticClass();
+	}
+	UClass* Z_Construct_UClass_AMonsterPawn()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_APawn();
+			Z_Construct_UPackage__Script_ArenaShooter();
+			OuterClass = AMonsterPawn::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_Health = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("Health"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(Health, AMonsterPawn), 0x0040000000000001);
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Navigation"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("MonsterPawn.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("MonsterPawn.h"));
+				MetaData->SetValue(OuterClass, TEXT("OnlyDefaultConstructorDeclared"), TEXT(""));
+				MetaData->SetValue(NewProp_Health, TEXT("Category"), TEXT("MonsterPawn"));
+				MetaData->SetValue(NewProp_Health, TEXT("ModuleRelativePath"), TEXT("MonsterPawn.h"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_AMonsterPawn(Z_Construct_UClass_AMonsterPawn, &AMonsterPawn::StaticClass, TEXT("AMonsterPawn"), false, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(AMonsterPawn);
+	UFunction* Z_Construct_UDelegateFunction_ArenaShooter_SpawnDelegate__DelegateSignature()
+	{
+		UObject* Outer=Z_Construct_UPackage__Script_ArenaShooter();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("SpawnDelegate__DelegateSignature"), RF_Public|RF_Transient|RF_MarkAsNative) UDelegateFunction(FObjectInitializer(), NULL, 0x00130000, 65535);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("SpawnComponent.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UClass* Z_Construct_UClass_USpawnComponent_NoRegister()
+	{
+		return USpawnComponent::StaticClass();
+	}
+	UClass* Z_Construct_UClass_USpawnComponent()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_UActorComponent();
+			Z_Construct_UPackage__Script_ArenaShooter();
+			OuterClass = USpawnComponent::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20B00080;
+
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_spawn = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("spawn"), RF_Public|RF_Transient|RF_MarkAsNative) UMulticastDelegateProperty(CPP_PROPERTY_BASE(spawn, USpawnComponent), 0x0040000010080000, Z_Construct_UDelegateFunction_ArenaShooter_SpawnDelegate__DelegateSignature());
+				UProperty* NewProp_SpawnTime = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("SpawnTime"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(SpawnTime, USpawnComponent), 0x0040000000000001);
+				UProperty* NewProp_ActorToSpawn = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("ActorToSpawn"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(ActorToSpawn, USpawnComponent), 0x0040000000000001, Z_Construct_UClass_AActor_NoRegister());
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("BlueprintSpawnableComponent"), TEXT(""));
+				MetaData->SetValue(OuterClass, TEXT("ClassGroupNames"), TEXT("Custom"));
+				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("ComponentReplication"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("SpawnComponent.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("SpawnComponent.h"));
+				MetaData->SetValue(OuterClass, TEXT("OnlyDefaultConstructorDeclared"), TEXT(""));
+				MetaData->SetValue(NewProp_spawn, TEXT("ModuleRelativePath"), TEXT("SpawnComponent.h"));
+				MetaData->SetValue(NewProp_SpawnTime, TEXT("Category"), TEXT("SpawnComponent"));
+				MetaData->SetValue(NewProp_SpawnTime, TEXT("ModuleRelativePath"), TEXT("SpawnComponent.h"));
+				MetaData->SetValue(NewProp_ActorToSpawn, TEXT("Category"), TEXT("SpawnComponent"));
+				MetaData->SetValue(NewProp_ActorToSpawn, TEXT("ModuleRelativePath"), TEXT("SpawnComponent.h"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_USpawnComponent(Z_Construct_UClass_USpawnComponent, &USpawnComponent::StaticClass, TEXT("USpawnComponent"), false, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(USpawnComponent);
+	UClass* Z_Construct_UClass_ASpawnScript_NoRegister()
+	{
+		return ASpawnScript::StaticClass();
+	}
+	UClass* Z_Construct_UClass_ASpawnScript()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_AActor();
+			Z_Construct_UPackage__Script_ArenaShooter();
+			OuterClass = ASpawnScript::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("SpawnScript.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("SpawnScript.h"));
+				MetaData->SetValue(OuterClass, TEXT("OnlyDefaultConstructorDeclared"), TEXT(""));
+				MetaData->SetValue(OuterClass, TEXT("ToolTip"), TEXT("DECLARE_DYNAMIC_MULTICAST_DELEGATE(FSpawnDelegate);"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_ASpawnScript(Z_Construct_UClass_ASpawnScript, &ASpawnScript::StaticClass, TEXT("ASpawnScript"), false, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(ASpawnScript);
+	UClass* Z_Construct_UClass_UTEst_NoRegister()
+	{
+		return UTEst::StaticClass();
+	}
+	UClass* Z_Construct_UClass_UTEst()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_UActorComponent();
+			Z_Construct_UPackage__Script_ArenaShooter();
+			OuterClass = UTEst::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20B00080;
+
+
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("BlueprintSpawnableComponent"), TEXT(""));
+				MetaData->SetValue(OuterClass, TEXT("ClassGroupNames"), TEXT("Custom"));
+				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("ComponentReplication"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("TEst.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("TEst.h"));
+				MetaData->SetValue(OuterClass, TEXT("OnlyDefaultConstructorDeclared"), TEXT(""));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_UTEst(Z_Construct_UClass_UTEst, &UTEst::StaticClass, TEXT("UTEst"), false, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(UTEst);
 	UPackage* Z_Construct_UPackage__Script_ArenaShooter()
 	{
 		static UPackage* ReturnPackage = NULL;
@@ -290,12 +621,13 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/ArenaShooter")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x43429210;
-			Guid.B = 0x39621C96;
+			Guid.A = 0x82E2E810;
+			Guid.B = 0xEFFAF111;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);
 
+			Z_Construct_UDelegateFunction_ArenaShooter_SpawnDelegate__DelegateSignature();
 		}
 		return ReturnPackage;
 	}

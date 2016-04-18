@@ -62,9 +62,11 @@ protected:
 	void OnEndFire();
 
 	bool Shooting;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float FireTime;
 	float FireTimer;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MaxHealth;
 	float Health;
 
