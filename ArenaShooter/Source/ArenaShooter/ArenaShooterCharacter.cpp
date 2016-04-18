@@ -21,7 +21,9 @@ AArenaShooterCharacter::AArenaShooterCharacter()
 	BaseTurnRate = 45.f;
 	BaseLookUpRate = 45.f;
 	Shooting = false;
+	LaserAnim = false;
 	Health = MaxHealth;
+
 
 	// Create a CameraComponent	
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
@@ -91,7 +93,6 @@ void AArenaShooterCharacter::SetupPlayerInputComponent(class UInputComponent* In
 	InputComponent->BindAxis("LookUpRate", this, &AArenaShooterCharacter::LookUpAtRate);
 }
 
-
 void AArenaShooterCharacter::OnBeginFire()
 {
 	Shooting = true;
@@ -109,9 +110,9 @@ void AArenaShooterCharacter::OnFire()
 		// try and fire a projectile
 		if (ProjectileClass != NULL)
 		{
-			const FRotator SpawnRotation = GetControlRotation();
+			SpawnRotation = GetControlRotation();
 			// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
-			const FVector SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
+			SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
 
 
 
@@ -134,7 +135,7 @@ void AArenaShooterCharacter::OnFire()
 				FHitResult HitResult;
 				bool DidHitSomething = World->LineTraceSingleByObjectType(HitResult, RayStart, RayEnd, FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
 					FCollisionQueryParams("ActionTrace", false, GetOwner()));
-				DrawDebugLine(GetWorld(), RayStart, RayEnd, FColor(255, 0, 0), true, -1.0f, 0, 10.0f);
+				//DrawDebugLine(GetWorld(), RayStart, RayEnd, FColor(255, 0, 0), true, -1.0f, 0, 10.0f);
 
 				if (DidHitSomething)
 				{
@@ -278,6 +279,10 @@ void AArenaShooterCharacter::Tick(float Deltatime)
 	if (Shooting&&FireTimer <= 0)
 	{
 		OnFire();
+		LaserAnim = true;
 		FireTimer = FireTime;
 	}
+	SpawnRotation = GetControlRotation();
+	// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
+	SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
 }
