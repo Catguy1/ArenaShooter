@@ -1,7 +1,7 @@
 // Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 
-#include "ArenaShooterCharacter.h"
 #include "ArenaShooter.h"
+#include "ArenaShooterCharacter.h"
 #include "ArenaShooterHUD.h"
 #include "Engine/Canvas.h"
 #include "TextureResource.h"
@@ -46,9 +46,13 @@ void AArenaShooterHUD::DrawCrosshair()
 
 void AArenaShooterHUD::DrawHealth()
 {
-	AArenaShooterCharacter * Player = Cast<AArenaShooterCharacter>(GetWorld()->GetFirstPlayerController()->GetActorClass());
+	AArenaShooterCharacter * Player = Cast<AArenaShooterCharacter>(UGameplayStatics::GetPlayerCharacter(this, 0));
 
-	FString Text = "text";
+	int Health = Player->GetCurrentHealth();
+
+	int MaxHealth = Player->GetMaxHealth();
+
+	FString Text = FString::SanitizeFloat(Health) + "/" + FString::SanitizeFloat(MaxHealth);
 
 	FText SomeText = FText::FromString(Text);
 

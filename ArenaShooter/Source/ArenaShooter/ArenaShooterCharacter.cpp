@@ -12,6 +12,16 @@
 //////////////////////////////////////////////////////////////////////////
 // AArenaShooterCharacter
 
+float AArenaShooterCharacter::GetCurrentHealth()
+{
+	return Health;
+}
+
+float AArenaShooterCharacter::GetMaxHealth()
+{
+	return MaxHealth;
+}
+
 AArenaShooterCharacter::AArenaShooterCharacter()
 {
 	// Set size for collision capsule
@@ -62,6 +72,8 @@ void AArenaShooterCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
+
+	Health = MaxHealth;
 
 	FP_Gun->AttachTo(Mesh1P, TEXT("GripPoint"), EAttachLocation::SnapToTargetIncludingScale, true); //Attach gun mesh component to Skeleton, doing it here because the skelton is not yet created in the constructor
 }
@@ -285,4 +297,21 @@ void AArenaShooterCharacter::Tick(float Deltatime)
 	SpawnRotation = GetControlRotation();
 	// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
 	SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
+}
+
+float AArenaShooterCharacter::TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, class AActor* DamageCauser)
+{
+	const float ActualDamage = Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
+	if (ActualDamage > 0.f)
+	{
+		Health -= ActualDamage;
+		// If the damage depletes our health set our lifespan to zero - which will destroy the actor  
+		if (Health <= 0.f)
+		{
+			GetWorld()->DestroyActor(this);
+			//SetLifeSpan(0.001f);
+		}
+	}
+
+	return ActualDamage;
 }
