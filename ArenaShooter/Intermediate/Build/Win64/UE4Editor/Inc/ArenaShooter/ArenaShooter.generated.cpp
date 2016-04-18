@@ -16,7 +16,7 @@ void EmptyLinkFunctionForGeneratedCodeArenaShooter() {}
 	void AArenaShooterCharacter::StaticRegisterNativesAArenaShooterCharacter()
 	{
 	}
-	IMPLEMENT_CLASS(AArenaShooterCharacter, 3523799178);
+	IMPLEMENT_CLASS(AArenaShooterCharacter, 915844575);
 	void AArenaShooterGameMode::StaticRegisterNativesAArenaShooterGameMode()
 	{
 	}
@@ -153,6 +153,8 @@ void EmptyLinkFunctionForGeneratedCodeArenaShooter() {}
 
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_MaxHealth = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxHealth"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxHealth, AArenaShooterCharacter), 0x0020080000000005);
+				UProperty* NewProp_FireTime = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FireTime"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(FireTime, AArenaShooterCharacter), 0x0020080000000005);
 				UProperty* NewProp_FireAnimation = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FireAnimation"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(FireAnimation, AArenaShooterCharacter), 0x0010000000000005, Z_Construct_UClass_UAnimMontage_NoRegister());
 				UProperty* NewProp_FireSound = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FireSound"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(FireSound, AArenaShooterCharacter), 0x0010000000000005, Z_Construct_UClass_USoundBase_NoRegister());
 				UProperty* NewProp_ProjectileClass = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("ProjectileClass"), RF_Public|RF_Transient|RF_MarkAsNative) UClassProperty(CPP_PROPERTY_BASE(ProjectileClass, AArenaShooterCharacter), 0x0014000000010001, Z_Construct_UClass_AArenaShooterProjectile_NoRegister(), UClass::StaticClass());
@@ -172,6 +174,10 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("ArenaShooterCharacter.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("ArenaShooterCharacter.h"));
 				MetaData->SetValue(OuterClass, TEXT("OnlyDefaultConstructorDeclared"), TEXT(""));
+				MetaData->SetValue(NewProp_MaxHealth, TEXT("Category"), TEXT("ArenaShooterCharacter"));
+				MetaData->SetValue(NewProp_MaxHealth, TEXT("ModuleRelativePath"), TEXT("ArenaShooterCharacter.h"));
+				MetaData->SetValue(NewProp_FireTime, TEXT("Category"), TEXT("ArenaShooterCharacter"));
+				MetaData->SetValue(NewProp_FireTime, TEXT("ModuleRelativePath"), TEXT("ArenaShooterCharacter.h"));
 				MetaData->SetValue(NewProp_FireAnimation, TEXT("Category"), TEXT("Gameplay"));
 				MetaData->SetValue(NewProp_FireAnimation, TEXT("ModuleRelativePath"), TEXT("ArenaShooterCharacter.h"));
 				MetaData->SetValue(NewProp_FireAnimation, TEXT("ToolTip"), TEXT("AnimMontage to play each time we fire"));
@@ -615,7 +621,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/ArenaShooter")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x726FF6DE;
+			Guid.A = 0x82E2E810;
 			Guid.B = 0xEFFAF111;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
