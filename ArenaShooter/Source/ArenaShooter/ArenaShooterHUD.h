@@ -14,9 +14,16 @@ public:
 	/** Primary draw call for the HUD */
 	virtual void DrawHUD() override;
 
+	UPROPERTY()
+		const UFont *Font;
+
 private:
 	/** Crosshair asset pointer */
 	class UTexture2D* CrosshairTex;
+
+	void DrawCrosshair();
+
+	void DrawHealth();
 
 };
 

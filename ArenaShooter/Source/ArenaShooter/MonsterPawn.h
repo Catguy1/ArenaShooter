@@ -14,6 +14,8 @@ public:
 	// Sets default values for this pawn's properties
 	AMonsterPawn();
 
+	AMonsterPawn(float _Damage, float _AttackSpeed, float _Health);
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -25,9 +27,19 @@ public:
 
 	virtual float TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, class AActor* DamageCauser) override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float Health;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float AttackSpeed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float Damage;
+
 private:
 	UPawnMovementComponent *MoveComponent = nullptr;
 
-	UPROPERTY(EditAnywhere)
-		float Health;
+	float AttackTimer;
+
+	virtual void Attack();
 };

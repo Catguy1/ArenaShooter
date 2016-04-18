@@ -32,11 +32,9 @@ void USpawnComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	AActor *a = ActorToSpawn;
-
 	if (Timer <= 0)
 	{
-		//GetWorld()->SpawnActor<AActor>(GetOwner()->GetActorLocation(), GetOwner()->GetActorRotation());
+		GetWorld()->SpawnActor<AActor>(ActorToSpawn->GetClass(), GetOwner()->GetActorLocation(), GetOwner()->GetActorRotation());
 		Timer = SpawnTime;
 	}
 	else

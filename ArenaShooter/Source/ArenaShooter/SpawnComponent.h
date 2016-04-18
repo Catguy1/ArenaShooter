@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "MonsterPawn.h"
 #include "ArenaShooterProjectile.h"
 #include "Components/ActorComponent.h"
 #include "SpawnComponent.generated.h"
