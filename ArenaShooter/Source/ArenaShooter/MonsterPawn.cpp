@@ -15,19 +15,11 @@ AMonsterPawn::AMonsterPawn()
 
 }
 
-AMonsterPawn::AMonsterPawn(float _Damage, float _AttackSpeed, float _Health)
-{
-	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
-	AttackTimer = AttackSpeed;
-}
-
 // Called when the game starts or when spawned
 void AMonsterPawn::BeginPlay()
 {
 	Super::BeginPlay();
-
+	AttackTimer = AttackSpeed;
 	Damage = 100;
 }
 
@@ -62,12 +54,6 @@ float AMonsterPawn::TakeDamage(float Damage, struct FDamageEvent const& DamageEv
 		if (ActualDamage > 0.f)
 		{
 			Health -= ActualDamage;
-			// If the damage depletes our health set our lifespan to zero - which will destroy the actor  
-			if (Health <= 0.f)
-			{
-				GetWorld()->DestroyActor(this);
-				//SetLifeSpan(0.001f);
-			}
 		}
 
 		return ActualDamage;
@@ -77,17 +63,17 @@ float AMonsterPawn::TakeDamage(float Damage, struct FDamageEvent const& DamageEv
 
 void AMonsterPawn::Attack()
 {
-	FVector StartPoint = FVector(GetActorLocation().X, GetActorLocation().Y, GetActorLocation().Z) + 90;
+	FVector StartPoint = FVector(GetActorLocation().X, GetActorLocation().Y, GetActorLocation().Z + 90);
 
 	FRotator Rotation = FRotator(GetActorRotation().Pitch, GetActorRotation().Yaw + 90, GetActorRotation().Roll);
 
-	FVector EndPoint = GetActorLocation() + (Rotation.Vector() * 200);
+	FVector EndPoint = StartPoint + (Rotation.Vector() * 200);
 
 	TArray<FHitResult> HitResult = TArray<FHitResult>();
 
 	DrawDebugLine(GetWorld(), StartPoint, EndPoint, FColor(255, 0, 0), true, -1.0f, 0, 10.0f);
 
-	bool Hit = GetWorld()->LineTraceMultiByObjectType(HitResult, StartPoint, EndPoint, FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody), FCollisionQueryParams("ActionTrace", false, GetOwner()));
+	bool Hit = GetWorld()->LineTraceMultiByObjectType(HitResult, StartPoint, EndPoint, FCollisionObjectQueryParams(ECollisionChannel::ECC_Pawn), FCollisionQueryParams("ActionTrace", false, GetOwner()));
 
 	if (Hit)
 	{
