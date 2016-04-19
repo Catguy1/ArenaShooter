@@ -27,6 +27,8 @@ AMonsterPawn::AMonsterPawn(float _Damage, float _AttackSpeed, float _Health)
 void AMonsterPawn::BeginPlay()
 {
 	Super::BeginPlay();
+
+	Damage = 100;
 }
 
 // Called every frame
@@ -54,43 +56,51 @@ void AMonsterPawn::SetupPlayerInputComponent(class UInputComponent* InputCompone
 
 float AMonsterPawn::TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, class AActor* DamageCauser)
 {
-	const float ActualDamage = Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
-	if (ActualDamage > 0.f)
+	if (DamageCauser->GetClass() != GetClass())
 	{
-		Health -= ActualDamage;
-		// If the damage depletes our health set our lifespan to zero - which will destroy the actor  
-		if (Health <= 0.f)
+		const float ActualDamage = Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
+		if (ActualDamage > 0.f)
 		{
-			GetWorld()->DestroyActor(this);
-			//SetLifeSpan(0.001f);
+			Health -= ActualDamage;
+			// If the damage depletes our health set our lifespan to zero - which will destroy the actor  
+			if (Health <= 0.f)
+			{
+				GetWorld()->DestroyActor(this);
+				//SetLifeSpan(0.001f);
+			}
 		}
-	}
 
-	return ActualDamage;
+		return ActualDamage;
+	}
+	return 0;
 }
 
 void AMonsterPawn::Attack()
 {
-	FVector StartPoint = GetActorLocation();
+	FVector StartPoint = FVector(GetActorLocation().X, GetActorLocation().Y, GetActorLocation().Z) + 90;
 
 	FRotator Rotation = FRotator(GetActorRotation().Pitch, GetActorRotation().Yaw + 90, GetActorRotation().Roll);
 
-	FVector EndPoint = GetActorLocation() + (Rotation.Vector() * 100);
+	FVector EndPoint = GetActorLocation() + (Rotation.Vector() * 200);
 
-	FHitResult HitResult;
+	TArray<FHitResult> HitResult = TArray<FHitResult>();
 
 	DrawDebugLine(GetWorld(), StartPoint, EndPoint, FColor(255, 0, 0), true, -1.0f, 0, 10.0f);
 
-	bool Hit = GetWorld()->LineTraceSingleByObjectType(HitResult, StartPoint, EndPoint, FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody), FCollisionQueryParams("ActionTrace", false, GetOwner()));
+	bool Hit = GetWorld()->LineTraceMultiByObjectType(HitResult, StartPoint, EndPoint, FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody), FCollisionQueryParams("ActionTrace", false, GetOwner()));
 
 	if (Hit)
 	{
-		TSubclassOf<UDamageType> const ValidDamageTypeClass = TSubclassOf<UDamageType>(UDamageType::StaticClass());
-		FDamageEvent DamageEvent(ValidDamageTypeClass);
+		for (int i = 0; i < HitResult.Num(); i++)
+		{
+			TSubclassOf<UDamageType> const ValidDamageTypeClass = TSubclassOf<UDamageType>(UDamageType::StaticClass());
+			FDamageEvent DamageEvent(ValidDamageTypeClass);
 
-		HitResult.Actor->TakeDamage(Damage, DamageEvent, GetController(), this);
+			HitResult[i].Actor->TakeDamage(Damage, DamageEvent, GetController(), this);
 
-		AttackTimer = AttackSpeed;
+			AttackTimer = AttackSpeed;
+
+		}
 	}
 }
 
