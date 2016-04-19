@@ -301,17 +301,16 @@ void AArenaShooterCharacter::Tick(float Deltatime)
 
 float AArenaShooterCharacter::TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, class AActor* DamageCauser)
 {
-	const float ActualDamage = Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
-	if (ActualDamage > 0.f)
+	if (Damage > 0.f)
 	{
-		Health -= ActualDamage;
+		Health -= Damage;
 		// If the damage depletes our health set our lifespan to zero - which will destroy the actor  
 		if (Health <= 0.f)
 		{
-			GetWorld()->DestroyActor(this);
+			UGameplayStatics::OpenLevel(this, FName("MainMenu"));
 			//SetLifeSpan(0.001f);
 		}
 	}
 
-	return ActualDamage;
+	return Damage;
 }

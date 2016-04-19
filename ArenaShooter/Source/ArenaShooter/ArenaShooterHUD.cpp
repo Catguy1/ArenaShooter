@@ -50,16 +50,14 @@ void AArenaShooterHUD::DrawHealth()
 
 	int Health = Player->GetCurrentHealth();
 
-	int MaxHealth = Player->GetMaxHealth();
-
-	FString Text = FString::SanitizeFloat(Health) + "/" + FString::SanitizeFloat(MaxHealth);
+	FString Text = "Health: " + FString::SanitizeFloat(Health);
 
 	FText SomeText = FText::FromString(Text);
 
 	float XPosition = 0;
 	float YPosition = Canvas->ClipY*0.9f;
 
-	FLinearColor TheFontColour = FLinearColor(1.0f, 1.0f, 1.0f);
+	FLinearColor TheFontColour = FLinearColor(0.0f, 0.0f, 0.0f);
 	FCanvasTextItem NewText(FVector2D(XPosition, YPosition), SomeText, Font, TheFontColour);
 
 	//Text Scale
@@ -68,4 +66,5 @@ void AArenaShooterHUD::DrawHealth()
 	//Draw
 	Canvas->DrawItem(NewText);
 }
+
 
