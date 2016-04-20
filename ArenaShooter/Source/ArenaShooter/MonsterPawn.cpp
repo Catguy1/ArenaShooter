@@ -71,7 +71,7 @@ void AMonsterPawn::Attack()
 
 	TArray<FHitResult> HitResult = TArray<FHitResult>();
 
-	DrawDebugLine(GetWorld(), StartPoint, EndPoint, FColor(255, 0, 0), true, -1.0f, 0, 10.0f);
+	//DrawDebugLine(GetWorld(), StartPoint, EndPoint, FColor(255, 0, 0), true, -1.0f, 0, 10.0f);
 
 	bool Hit = GetWorld()->LineTraceMultiByObjectType(HitResult, StartPoint, EndPoint, FCollisionObjectQueryParams(ECollisionChannel::ECC_Pawn), FCollisionQueryParams("ActionTrace", false, GetOwner()));
 
