@@ -73,8 +73,6 @@ void AArenaShooterCharacter::BeginPlay()
 	// Call the base class  
 	Super::BeginPlay();
 
-	Health = MaxHealth;
-
 	FP_Gun->AttachTo(Mesh1P, TEXT("GripPoint"), EAttachLocation::SnapToTargetIncludingScale, true); //Attach gun mesh component to Skeleton, doing it here because the skelton is not yet created in the constructor
 }
 
@@ -140,9 +138,9 @@ void AArenaShooterCharacter::OnFire()
 
 				//GetOwner()->GetActorEyesViewPoint(PPos, Prot);
 
-				FVector RayStart = SpawnLocation + SpawnRotation.Vector();
+				FVector RayStart = GetActorLocation() + SpawnRotation.Vector();
 
-				FVector RayEnd = SpawnLocation + SpawnRotation.Vector() * 10000000;
+				FVector RayEnd = GetActorLocation() + SpawnRotation.Vector() * 10000000;
 
 				FHitResult HitResult;
 				bool DidHitSomething = World->LineTraceSingleByObjectType(HitResult, RayStart, RayEnd, FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
