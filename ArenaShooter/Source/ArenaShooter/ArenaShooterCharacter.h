@@ -84,10 +84,12 @@ protected:
 	void OnBeginFire();
 	void OnEndFire();
 
+	
 
 
 
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float Damage;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float MaxHealth;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

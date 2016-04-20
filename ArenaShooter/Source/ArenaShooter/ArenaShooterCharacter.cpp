@@ -154,7 +154,7 @@ void AArenaShooterCharacter::OnFire()
 					TSubclassOf<UDamageType> const ValidDamageTypeClass = TSubclassOf<UDamageType>(UDamageType::StaticClass());
 					FDamageEvent DamageEvent(ValidDamageTypeClass);
 
-					HitResult.Actor->TakeDamage(1000, DamageEvent, GetWorld()->GetFirstPlayerController(), this);
+					HitResult.Actor->TakeDamage(Damage, DamageEvent, GetWorld()->GetFirstPlayerController(), this);
 				}
 			}
 
